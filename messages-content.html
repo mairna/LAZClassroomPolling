@@ -1,0 +1,13 @@
+<div class="messageContent">
+    <div ng-switch = {{$ctrl.showPolls()}}>
+        <div ng-switch-when = "true">
+            <div ng-switch = {{$ctrl.isPoll(message)}} ng-repeat = "message in $ctrl.messagesList">
+                <message-container ng-switch-when = "false" message = "message"></message-container>
+                <polls-container ng-switch-when = "true" poll = "message"></polls-container>
+            </div>
+        </div>
+        <message-container ng-switch-when="false" ng-repeat="message in $ctrl.messagesList" message="message"></message-container>
+    </div>
+
+    <p ng-if="$ctrl.hasNoMessages()" class="messages_noMessage">No messages</p>
+</div>

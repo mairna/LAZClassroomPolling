@@ -1,0 +1,19 @@
+<div class="message_container">
+    <div class="message_date">{{$ctrl.created_at}}</div>
+    <div class="message_profile">
+        <img id="profilePic" class="message_profilePic" ng-src="{{$ctrl.profileSrc}}"/>
+        <div class="message_sender">{{$ctrl.poll.sender}}</div>
+    </div>
+    <div class="message" ng-class="{ 'message_newMessage' : !$ctrl.shownAt }">
+        <div class="message_content">
+            <div class="message_text">
+                <p ng-show = "$ctrl.isPollAnswered()">Thanks for Answering!</p>
+                <p>{{$ctrl.text}}</p>
+                <span ng-repeat="option in $ctrl.options track by $index">
+                    <button class = "btn ng-binding" ng-disabled = "$ctrl.disableOptionButtons()" ng-click = "$ctrl.sendStudentResponse(option)">{{option}}</button>
+                    <br>
+            </span>
+            </div>
+        </div>
+    </div>
+</div>

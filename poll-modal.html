@@ -1,0 +1,29 @@
+<div class="modalWindow modalWindow-sm" role="dialog" aria-modal="true" aria-labelled="Send Poll">
+    <div class="modalWindow_body">
+        <modal-close-button on-close="$ctrl.close"></modal-close-button>
+        <h3 class="marginT0">Send a poll to your students</h3>
+        <div class="classPoll">
+            <form name="poll" ng-submit="$ctrl.sendPoll()">
+                <label for="pollQuestion">
+                    <strong>Type Your Question for the Poll</strong>
+                </label>
+                <span class="visuallyHidden">Number of characters remaining: </span>
+                <strong class="under-limit accent floatR">{{250 - $ctrl.pollQuestion.length}}</strong>
+                <textarea class="marginB" id="pollQuestion" name="pollQuestion" maxlength="250" ng-model="$ctrl.pollQuestion"></textarea>
+                <br>
+                <label for="poll_options">
+                    <strong>Input 2-6 Options Below</strong>
+                </label>
+                <br>
+                <div data-ng-repeat="option in $ctrl.options track by $index">
+                    <input type="text" placeholder = "Option" ng-model="option.text">
+                    <button type = "button" ng-click="$ctrl.removeOption($index)">X</button>
+                </div>
+                <br>
+                <button type="button" class = "btn ng-binding" ng-disabled = "$ctrl.disableAddOption()" ng-click="$ctrl.addNewOption()">Add option</button>
+                <br></br>
+                <button type="submit" class="btn btn-confirm">Send Poll</button>
+            </form>
+        </div>
+    </div>
+</div>
